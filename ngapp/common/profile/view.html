@@ -1,0 +1,118 @@
+<div class="profile-div animated fadeIn" ng-controller="ProfileCtrl as vm">
+    <div class="profile-card">
+        <div class="profile-credentials">
+            <h3>{{vm.credentials.fname}}</h3>
+            <h5 style="color:honeydew">{{vm.username.toUpperCase()}}</h5>
+        </div>
+        <ul class="profile-buttons">
+            <li ng-class="{active: vm.changeBox === 'username'}" ng-click="vm.changingBox('username')">
+                <a>Change username</a>
+            </li>
+            <li ng-class="{active: vm.changeBox === 'password'}" ng-click="vm.changingBox('password')">
+                <a>Change password</a>
+            </li>
+        </ul>
+        <div class="box-for-profile" ng-class="{'open': vm.changeBox}">
+            <div ng-if="vm.changeBox === 'username'">
+                <form ng-submit="vm.saveusername()">
+                    <div class="floating-label">
+                        <input type="text" class="form-control" ng-model="vm.variables.username" ng-class="{'glow': vm.username.username}" required
+                            focus-me="vm.changeBox === 'username'" required>
+                        <label ng-class="{'float':vm.variables.username}">New username</label>
+                    </div>
+                    <div class="floating-label">
+                        <input type="password" class="form-control" ng-model="vm.variables.password" ng-class="{'glow': vm.username.password}" required>
+                        <label ng-class="{'float':vm.variables.password}">Enter password for Confirmation</label>
+                    </div>
+                    <div class="footer">
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fa fa-save"></i>&nbsp;Save</button>
+                                <button class="btn btn-dark" type="button" ng-click="vm.changeBox = ''">
+                                    <i class="fa fa-times"></i>&nbsp;Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div ng-if="vm.changeBox === 'password'">
+                <form ng-submit="vm.savepassword()">
+                    <div class="floating-label">
+                        <input type="password" class="form-control" ng-model="vm.variables.Oldpassword" ng-class="{'glow': vm.password.Oldpassword}"
+                            required focus-me="vm.changeBox === 'password'">
+                        <label ng-class="{'float':vm.password.Oldpassword}">Old password</label>
+                    </div>
+                    <div class="floating-label">
+                        <input type="password" class="form-control" ng-model="vm.variables.Newpassword" ng-class="{'glow': vm.password.Newpassword}"
+                            required>
+                        <label ng-class="{'float':vm.variables.Newpassword}">New password</label>
+                    </div>
+                    <div class="floating-label">
+                        <input type="password" class="form-control" ng-model="vm.variables.Retypepassword" ng-class="{'glow': vm.password.Retypepassword}"
+                            required>
+                        <label ng-class="{'float':vm.variables.Retypepassword}">Retype New password</label>
+                    </div>
+                    <div class="footer">
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fa fa-save"></i>&nbsp;Save</button>
+                                <button class="btn btn-dark" type="button" ng-click="vm.changeBox = ''">
+                                    <i class="fa fa-times"></i>&nbsp;Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div ng-if="vm.changeBox === 'Picture'">
+                <form ng-submit="vm.saveProfPic()">
+                    <div class="row">
+                        <div class="col-md-12 bottom-margin flex">
+                            <div class="change-pic">
+                                <img id="img" ng-src="{{ vm.profile.ProfilePic }}">
+                                <div class="hover-the-pic" ng-click="vm.changePic()">
+                                    <i class="fa fa-plus"></i>
+                                    <h5>Click to select photo</h5>
+                                </div>
+                            </div>
+                            <div class="prof-side-text">
+                                <h4>Filename:{{vm.credentials.pic}}</h4>
+                            </div>
+                            <input id="file" type="file" accept="image/*" file-model="vm.image" custom-on-change="vm.Preview" style="display: none;"
+                            />
+                        </div>
+                        <div class="col-md-12">
+                            <div class="floating-label">
+                                <input type="password" class="form-control" ng-model="vm.profile.password" ng-class="{'glow': vm.profile.password}" required>
+                                <label ng-class="{'float':vm.profile.password}">Input password to Apply Changes</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fa fa-save"></i>&nbsp;Save</button>
+                                <button class="btn btn-dark" type="button" ng-click="vm.changeBox = ''">
+                                    <i class="fa fa-times"></i>&nbsp;Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="profile-image">
+            <div class="image-div" ng-class="{active: vm.changeBox === 'Picture'}">
+                <img id="img-top" ng-src="{{ vm.pic }}">
+                <div class="hover-prof-pic" ng-click="vm.changingBox('Picture')">
+                    <!-- <a>
+                        <h5>
+                            <i class="fa fa-camera"></i>&nbsp;Change Profile Picture</h5>
+                    </a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,73 @@
+<div class=" animated fadeIn" ng-controller="SalonProfileCtrl as vm">
+<div class="col-md-12" style="height: 100%;padding: 2%; background-color: #bcd2e8;"> 
+    <div class="row" style="padding: 0;">
+        <div class="col-md-12">
+            <img id="img" ng-if="vm.avblepic==='true'" ng-src="{{vm.pic}}" alt="" class="img-fluid" style="width: 100%;height: 25rem;" >
+            <img id="img" ng-if="vm.avblepic==='false'" ng-src="assets/images/salon/salon1.jpg" alt="" class="img-fluid"  style="width: 100%;height: 25rem;" >
+            <!-- <span class="edit-prof-pic" ng-click="vm.updateSalonProfile()"><i class="fa fa-camera"></i></span>
+            <input id="file" type="file" accept="image/*" file-model="vm.image" custom-on-change="vm.Preview" style="display: none;"> -->
+        </div>
+        <div class="col-md-12">
+            <h2>{{vm.profile.name}}</h2>
+            <h4>{{vm.profile.salon_description}}</h4>
+            <!-- <b><h4>Staff/s: Chakadal, Chackie, Teresa</h4></b> -->
+        </div>
+        <!-- gapatong ang mga cover photos -->
+        
+    </div>
+    <div class="row" style="padding:0;">
+        <br>
+        <div class="col-md-6">
+           <table class="table table-striped">
+               <tbody>
+                    <tr>
+                        <td style="font-size: 18px;"><b>Contact Information</b></td>
+                        <!-- <td style="font-size: 18px;text-align: right;" ng-click="vm.saveContactInfo(vm.profile)"><b><i class="fa fa-edit"></i></b></td> -->
+                    </tr>
+                    <tr>
+                        <td><b>Location:</b></td>
+                        <td>{{vm.profile.address}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Contact Number:</b></td>
+                        <td>{{vm.profile.phone_number}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Email Address:</b></td>
+                        <td>{{vm.profile.email}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Office hours(IN):</b></td>
+                        <td>{{vm.profile.office_hrs_in}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Office hours(OUT):</b></td>
+                        <td>{{vm.profile.office_hrs_out}}</td>
+                    </tr>
+                    <!-- <tr>
+                        <td><b>Services:</b></td>
+                        <td></td>
+                    </tr> -->
+               </tbody>
+           </table>
+        </div>
+        <!-- <img  ng-src="assets/images/salon/image_unavailable.jpg" alt="" class="img-fluid" style="width: 100%;height: 25rem;" > -->
+        <div ng-if="vm.avblepicbs ==='false'" class="col-md-6" >
+                <img id="bs" ng-src="assets/images/salon/image_unavailable.jpg" alt="" class="img-fluid" style="width: 100%;height: 25rem;" >
+                <!-- <span class="edit" ng-click="vm.updateBusinessPermit()"><i class="fa fa-camera"></i></span>
+                <input id="bsfile" type="file" accept="image/*" file-model="vm.image" custom-on-change="vm.Preview_business_permit" style="display: none;"> -->
+                
+            </div>
+        <div ng-if="vm.avblepicbs==='true'" class="col-md-6" >
+            <a href="http://localhost/weserve/assets/images/salon/{{vm.profile.salon_business_permit}}">
+                <img id="bs" ng-if="vm.avblepicbs" ng-src="assets/images/salon/{{vm.profile.salon_business_permit}}" alt="" class="img-fluid" style="width: 100%;height: 25rem;" >
+                <!-- <span class="edit" ng-click="vm.updateBusinessPermit()"><i class="fa fa-camera"></i></span>
+                <input id="bsfile" type="file" accept="image/*" file-model="vm.image" custom-on-change="vm.Preview_business_permit" style="display: none;"> -->
+            </a>
+           
+        </div>
+      
+    </div>
+    
+</div>
+</div>

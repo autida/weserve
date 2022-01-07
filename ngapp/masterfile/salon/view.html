@@ -1,0 +1,57 @@
+
+
+<div class="animated fadeIn" ng-controller="MemberRegCtrl as vm">
+
+    <div class="row" style="position: absolute;">
+        <div class="col-md-12 center" >
+            <image src="assets/images/logo.png" style="width:100rem;height:55rem;opacity: 0.2;">
+        </div>
+    </div>
+    <div class="row">
+        <div class="progress-card col-md-12">
+            <div class="progress-card-header">
+                <div class="header-button-group">
+                    <h3>List of Salon</h3>
+                    <!-- <div class="btn-group">
+                        <button type="button" class="btn-clear" ng-click="vm.newMember()" title="Add New Member">
+							<i class="fa fa-user-plus"></i>
+						</button>
+                    </div> -->
+                </div>
+            </div>
+            <div class="progress-card-body">
+                <div class="row">
+                    <div class="col-md-12" style="padding-top: 2%;opacity: 1;">
+                        <span ng-if="vm.salon_count === 0 " class="center"><i>No Registered Salon.</i></span>
+                                <div class=" col-md-6" style="padding: 10px;" ng-repeat="x in vm.filteredsalon" >
+                                    <div class="card" style="padding: 0;" ng-click="vm.getData(x.salon_id)">
+                                        <div class="row">
+                                            <div class="col-md-6" >
+                                                <img ng-src="assets/images/salon/{{x.salon_profpic}}" alt="" class="img-fluid" style="width: 100%;height: 15rem;" >
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="container" style="padding: 0;" >
+                                                    <h4 style="padding: 0;"><b>{{x.name}}</b></h4> 
+                                                    <p style="padding: 0;color:rgba(29, 32, 44, 0.7)"><b>Description: </b>{{x.salon_description}}</p> 
+                                                    <span ng-if="x.rate==='1'|| x.rate==='2' || x.rate==='3'||x.rate==='4'||x.rate==='5'" style="padding: 0;color:rgba(29, 32, 44, 0.7)"><b>Rating:</b> {{x.rate}}/5 </span>
+                                                    <span ng-if="!x.rate" style="padding: 0;color:rgba(29, 32, 44, 0.7)"><b>Rating:</b> 0/5 </span>
+                                                    <span  style="color: yellow;font-size: 18px;"></span><span ng-if="!x.rate" style="color:gray;font-size: 18px;opacity: 0.3;">★★★★★</span>
+                                                    <span  ng-if="x.rate==='1'" style="color: yellow;font-size: 18px;">★</span><span ng-if="x.rate==='1'" style="color:gray;font-size: 18px;opacity: 0.3;">★★★★</span>
+                                                    <span  ng-if="x.rate==='2'" style="color: yellow;font-size: 18px;">★★</span><span  ng-if="x.rate==='2'" style="color:gray;font-size: 18px;opacity: 0.3;">★★★</span>
+                                                    <span  ng-if="x.rate==='3'" style="color: yellow;font-size: 18px;">★★★</span><span  ng-if="x.rate==='3'" style="color:gray;font-size: 18px;opacity: 0.3;">★★</span>
+                                                    <span  ng-if="x.rate==='4'" style="color: yellow;font-size: 18px;">★★★★</span><span  ng-if="x.rate==='4'" style="color:gray;font-size: 18px;opacity: 0.35;">★</span>
+                                                    <span  ng-if="x.rate==='5'" style="color: yellow;font-size: 18px;">★★★★★</span><span  ng-if="x.rate==='5'" style="color:gray;font-size: 18px;opacity: 0.3;"></span>
+                                                    <!-- <span ng-bind-html="x.salonRating"></span> -->
+                                                    <!-- <div star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></div> -->
+                                                        <!-- <jk-rating-stars  read-only="readOnly" ></jk-rating-stars> -->
+                                                       
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                     </div>
+                    </div>
+        </div>
+</div>

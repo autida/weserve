@@ -1,0 +1,17 @@
+<div class="confirmation-dialog">
+    <div class="text-center">
+        <h5 class="confirmation-title">{{modal.variables.title}}</h5>
+    </div>
+    <div class="flex-row">
+        <div class="confirmation-icon">
+            <i class="fa fa-exclamation-triangle fa-fw" ng-class="{ 'danger': modal.variables.danger }"> </i>
+        </div>
+        <div class="confirmation-text flex-column">
+            <h5 class="confirmation-message">{{modal.variables.message}}</h5>
+        </div>
+    </div>
+    <div class="buttons">
+        <h5 class="truth" ng-click="modal.close(true)" ng-class="{ 'danger': modal.variables.danger }">{{ modal.variables.buttonTruthyName }}</h5>
+        <h5 ng-click="modal.close(false)" class="cancel-button">{{ modal.variables.buttonFalsyName }}</h5>
+    </div>
+</div>

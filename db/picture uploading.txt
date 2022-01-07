@@ -1,0 +1,93 @@
+ public function index_post()
+    {
+
+        $data = array(
+            'SDID' => $this->post('SDID') ? $this->post('SDID') : " ",
+            'DocRequirement' => $this->post('DocRequirement') ? $this->post('DocRequirement') : " ",
+            'DLinkID' => $this->post('DLinkID') ? $this->post('DLinkID') : " ",
+            'DCLinkID' => $this->post('DCLinkID') ? $this->post('DCLinkID') : " ",
+            'FolderName' => $this->post('FolderName') ? $this->post('FolderName') : " ",
+            'Keyword' => $this->post('Keyword') ? $this->post('Keyword') : " ",
+            'Subject' => $this->post('Subject') ? $this->post('Subject') : " ",
+            'Signatory' => $this->post('Signatory') ? $this->post('Signatory') : " ",
+            'Designation' => $this->post('Designation') ? $this->post('Designation') : " ",
+            'FileName' => $this->post('FileName') ? $this->post('FileName') : " ",
+        );
+
+        $file_names = array();
+        // $logged_data = $this->session->userdata('logged_in');
+        foreach ($_FILES as $key => $file) {
+            // check if pdf file
+            $extns = explode('.', $file['name']);
+            $file_ext = strtolower(end($extns));
+            if ($file_ext != "pdf") {
+                $result = array(
+                    // 'data' => $file_size,
+                    'success' => false,
+                    'message' => 'File uploaded is not a PDF File.',
+                );
+                return $this->response($result, REST_Controller::HTTP_OK);
+            }
+            // if($file['size'] > 6000000){
+            //     $result = array(
+            //         'data' => $file['size'],
+            //         'success' => false,
+            //         'message' => 'File size exceeds to 6MB.'
+            //     );
+            //     return $this->response($result, REST_Controller::HTTP_OK);
+            // }
+
+            // $file_name = $file['name'];
+            $file_size = $file['size'];
+            $file_tmp = $file['tmp_name'];
+            // $file_type = $file['type'];
+            $file_name = $this->post('FileName') . "-" . date("dmY") . "." . $file_ext;
+            $first_path = "pdf_files/";
+            if (!is_dir($first_path)) {
+                mkdir($first_path, 0777);
+            }
+            $path = "pdf_files/" . $this->post('FolderName') . "/";
+            if (!is_dir($path)) {
+                mkdir($path, 0777);
+            }
+            move_uploaded_file($file_tmp, $path . $file_name);
+            $file_names['path'] = $path . $file_name;
+
+            // $result = $this->new_document_model->save_path($logged_data['mid'], $file_names['path']);
+            $data['file_path'] = $file_names['path'];
+
+
+            $parser = new \Smalot\PdfParser\Parser();
+            $pdf = $parser->parseFile($file_names['path']);
+            $text = $pdf->getText();
+            $data['Subject'] = $text;
+
+            
+            // $parser = new TesseractOCR($file_names['path']);
+            // $parser->whitelist(range('A', 'Z'));
+            // $parser->run();
+
+
+            $result = $this->new_document_model->save_detail($data);
+            if($result['id']){
+                $result = array(
+                    'success' => true,
+                    'message' => 'Successfully Saved Details.',
+                    'id' => $result['id']
+                );
+                return $this->response($result, REST_Controller::HTTP_OK);
+            }elseif($result == true){
+                $result = array(
+                    'success' => true,
+                    'message' => 'Successfully Saved Details.'
+                );
+                return $this->response($result, REST_Controller::HTTP_OK);
+            }else{
+                $result = array(
+                    'success' => false,
+                    'message' => 'Failed Saving.'
+                );
+                return $this->response($result, REST_Controller::HTTP_OK);
+            }
+        }
+    }

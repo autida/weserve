@@ -1,0 +1,126 @@
+<div ng-controller="CalendarCtrl as vm">
+    <div class="row">
+        <div class="card col-md-12">
+            <!-- <div class="card-header">
+                <h3>Calendar</h3>
+            </div> -->
+            <form ng-submit="vm.save()">
+                <div class="card-body">
+                    <!-- <div class="row">
+                        <div class="col-md-6">
+                            <div style="height: 300px;" ui-grid="vm.menuGrid" ui-grid-selection ui-grid-resize-columns></div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="floating-label">
+                                        <select class="form-control" ng-model="vm.variables.FormStates" ng-class="{'glow': vm.variables.FormStates}" ng-change="vm.changeLocation()">
+                                            <option></option>
+                                            <option ng-repeat="x in vm.states">{{ x.FormStates }}</option>
+                                        </select>
+                                        <label ng-class="{'float':vm.variables.FormStates}">---Select From Existing Menu---</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="floating-label">
+                                        <input type="text" class="form-control" ng-model="vm.variables.FormID" ng-class="{'glow': vm.variables.FormID}" disabled>
+                                        <label ng-class="{'float': vm.variables.FormID}">Menu ID</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="floating-label ">
+                                        <input type="text" class="form-control" ng-model="vm.variables.FormGroup" ng-class="{'glow': vm.variables.FormGroup}" disabled>
+                                        <label ng-class="{'float': vm.variables.FormGroup}">Menu Group</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="floating-label ">
+                                        <input type="text" class="form-control" ng-model="vm.variables.FormName" ng-class="{'glow': vm.variables.FormName}" disabled>
+                                        <label ng-class="{'float': vm.variables.FormName}">Menu Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="floating-label ">
+                                        <input type="text" class="form-control" ng-model="vm.variables.FormLocation" ng-class="{'glow': vm.variables.FormLocation}"
+                                            disabled>
+                                        <label ng-class="{'float': vm.variables.FormLocation}">Menu Location</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- <table class="text-width text-center">
+                                <tr>
+                                    <th width="10%">
+                                        <h3>Time</h3>
+                                    </th>
+                                    <th width="10%">
+                                        <h2>Staff</h2>
+                                    </th>
+                                    <th width="10%">
+                                        <h1>Service</h1>
+                                    </th>
+                                    <th width="10%">
+                                        <h1>Status</h1>
+                                    </th>
+                                </tr>
+                                <tr class="bg-primary text-light" ng-if="vm.travels.length < 1">
+                                    <td colspan="6">
+                                        <h1>No Travel</h1>
+                                    </td>
+                                </tr>
+                                <tr class="bg-primary text-light pointer" ng-repeat="x in vm.travels track by $index" style="padding: 10px;" ng-dblclick="vm.edit(x, $index)">
+                                    <td width="5%">
+                                        <h1>{{ x.from | date: 'MMM d, h:mm a' }}</h1>
+                                    </td>
+                                    <td width="10%">
+                                        <h1>{{ x.to }}</h1>
+                                    </td>
+                                    <td>
+                                        <h1>{{ x.destinations }}</h1>
+                                    </td>
+                                    <td>
+                                        <h1>{{ x.plate_no }}</h1>
+                                    </td>
+                                    <td>
+                                        <h1>{{ x.driver }}</h1>
+                                    </td>
+                                    <td>
+                                        <h1>{{ x.remarks }}</h1>
+                                    </td>
+                                </tr>
+                            </table> -->
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="bg-light" style="font-size: 150%" id="calendar"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+                <!-- <div class="card-footer">
+                    <div class="footer-content">
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fa fa-save fa-fw"></i>Save</button>
+                                <button type="button" class="btn btn-danger" ng-click="vm.delete()">
+                                    <i class="fa fa-trash fa-fw"></i>Delete
+                                </button>
+                                <button type="button" class="btn btn-primary" ng-click="vm.clearFunction()">
+                                    <i class="fa fa-save fa-fw"></i>Clear
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<header class="toolbar">
+	<nav class="toolbar__navigation">
+		<div>
+			<div class="toggle-button" ng-click="vm.openSideMenu()">
+				<div class="circle icon" ng-class="{'close': vm.showSide}">
+					<span class="line top"></span>
+					<span class="line middle"></span>
+					<span class="line bottom"></span>
+				</div>
+			</div>
+		</div>
+		<div class="current-location">
+			<h3>{{$state.params.urlName}}</h3>
+		</div>
+	</nav>
+</header>

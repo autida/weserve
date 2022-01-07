@@ -1,0 +1,12 @@
+<div class="app-body" ng-controller="AppCtrl as vm">
+	<div ng-include="'ngapp/common/extras/page_not_allowed.html'" include-replace></div>
+	<div ng-include="'ngapp/common/extras/idle.html'" include-replace></div>
+	<div ng-include="'ngapp/common/layouts/navbar.html'" include-replace></div>
+	<div ng-include="'ngapp/common/layouts/sidebar.html'" include-replace></div>
+	<main class="main">
+		<div class="container-fluid">
+			<ui-view></ui-view>
+		</div>
+	</main>
+	<div ng-include="'ngapp/common/layouts/footer.html'" include-replace></div>
+</div>

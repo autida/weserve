@@ -1,0 +1,307 @@
+<style>
+    #cont{
+        position: relative;
+        height: 25%;
+        overflow: hidden;
+        z-index: 1;
+        margin-left:2%;
+        padding: 2px;
+    }
+    .img{
+        width: 100%;
+        /* position: absolute; */
+        height:100%;
+        margin: 0;
+    }
+    .card{
+        outline-color: whitesmoke !important;
+        
+    }
+</style>
+<div ng-controller="DashboardCtrl as vm" class="dashboard">
+        <div class="row" style="position: absolute;">
+            <div class="col-md-12 center" >
+                <image src="assets/images/logo.png" style="width:100rem;height:55rem;opacity: 0.2">
+            </div>
+        </div>
+        <div ng-if="vm.level === '1'">
+            <div class="row">
+                <div class="col-md-12" style="height: 200px;opacity: 0.9;">
+                    <div class=" col-md-4" style="padding: 10px;height: 100%;">
+                        <div class="card" style=" height: 75%;">
+                            <div class="col-md-4">
+                                <i class="fa fa-users" style="font-size: 85px;color:#9fb7f4"></i>
+                                <!-- <i class="fa fa-exclamation" style="font-size:100px"></i> -->
+                            </div>
+                            <div class="col-md-8" style="padding-left:25px ;">
+                                <div class="row">
+                                    <h4>Pending Requests</h4>
+                                </div>
+                                <div class="row">
+                                    <h4>{{vm.pending_request_num}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-md-4" style="padding: 10px;height: 100%;">
+                        <div class="card" style=" height: 75%;">
+                            <div class="col-md-4">
+                                <i class="fa fa-users" style="font-size:85px;color:#9fb7f4"></i>
+                            </div>
+                            <div class="col-md-8" style="padding-left:25px ;">
+                                <div class="row">
+                                    <h4>Service Providers</h4>
+                                </div>
+                                <div class="row">
+                                    <h4>{{vm.service_prov_num}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-md-4" style="padding: 10px;height: 100%;">
+                        <div class="card" style=" height: 75%;">
+                            <div class="col-md-4">
+                                <i class="fa fa-users" style="font-size:85px;color:#9fb7f4"></i>
+                            </div>
+                            <div class="col-md-8" style="padding-left:25px ;">
+                                <div class="row">
+                                    <h4>Clients</h4>
+                                </div>
+                                <div class="row">
+                                    <h4>{{vm.client_num}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-if="vm.level === '3' && vm.approved === '1'">
+            <div class="row">
+                <div class="card col-md-12 ">
+                    <div class="card-header">
+                       <b><h3>Appointments</h3></b>
+                    </div>
+                    <div class="card-body" style="opacity: 0.9;">
+                      
+                        <div class="col-md-12" style="height: 100%;padding-top: 3%;"> 
+                            <span ng-if="vm.appointment_count === 0 " class="center"><i>No Available Appointment.</i></span>
+                            <div class=" col-md-6" style="padding: 10px;height: 32rem;" ng-repeat="x in vm.filteredap" >
+                                <div ng-if="x.status === 'completed'||x.status === 'active' || x.status ==='pending'" class="card" style="padding: 0;height: 30rem">
+                                
+                                    <div class="row">
+                                        <!-- <div class="col-md-6" >
+                                            <img ng-src="assets/images/salon/{{x.salon_profpic}}" alt="" class="img-fluid" style="width: 100%;height: 15rem;" >
+                                        </div> -->
+                                        <div class="col-md-12">
+                                            <!-- <div class="container" > -->
+                                                <!-- <h4><b></b></h4> 
+                                                <p>{{x.salon_description}}</p>  -->
+                                                <table class="table table-striped">
+                                                    <tbody>
+                                                         <tr>
+                                                             
+                                                             <td colspan="2" style="font-size: 18px;"><i class="fa fa-check" style="color: green;font-size: 18px;" ng-click = "vm.AppointmentComplete(x)"></i>  <b>Appointment Information</b></td>
+                                                            
+                                                         </tr>
+                                                        <tr>
+                                                            <td><b>Date and Time:</b></td>
+                                                            <td>{{x.date}}</td>
+                                                        </tr>
+                                                         <tr>
+                                                             <td><b>Customer Name:</b></td>
+                                                             <td>{{x.cust_fname}} {{x.cust_mname}} {{x.cust_lname}}</td>
+                                                         </tr>
+                                                         <!-- <tr>
+                                                             <td><b>Contact Number:</b></td>
+                                                             <td>{{x.phone_number}}</td>
+                                                         </tr> -->
+                                                         <tr>
+                                                             <td><b>Service:</b></td>
+                                                             <td>{{x.service_description}}</td>
+                                                         </tr>
+                                                         <tr>
+                                                            <td><b>Price:</b></td>
+                                                            <td>₱{{x.service_price}}.00</td>
+                                                        </tr>
+                                                         <tr>
+                                                             <td><b>Staff:</b></td>
+                                                             <td>{{x.fname}} {{x.lname}}</td>
+                                                         </tr>
+                                                         <tr >
+                                                            <td><b>Review:</b></td>
+                                                            <td  colspan="2" style="padding-bottom:0;font-size: 16px; vertical-align: auto;" ></td>
+                                                            <!-- <td ng-if="x.status === 'COMPLETED'||x.status === 'completed'" colspan="2" style="padding-bottom:0;font-size: 16px; vertical-align: auto;">{{x.review}}</td> -->
+                                                        </tr>
+                                                         <tr>
+                                                            <td colspan="2" style="padding-bottom:0;font-size: 16px;text-align: center; vertical-align: auto;" ><b>{{x.status.toUpperCase()}}</b></td>
+                                                        </tr>
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            <!-- </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-if="x.status ==='rated'" class="card" style="padding: 0;height: 30rem">
+                                    <div class="row">
+                                        <!-- <div class="col-md-6" >
+                                            <img ng-src="assets/images/salon/{{x.salon_profpic}}" alt="" class="img-fluid" style="width: 100%;height: 15rem;" >
+                                        </div> -->
+                                        <div class="col-md-12">
+                                            <!-- <div class="container" > -->
+                                                <!-- <h4><b></b></h4> 
+                                                <p>{{x.salon_description}}</p>  -->
+                                                <table class="table table-striped">
+                                                    <tbody>
+                                                         <tr>
+                                                             <!-- <td ng-if="x.status === 'active'||x.status === 'ACTIVE'" colspan="2" style="font-size: 18px;"><b>Appointment Information</b></td> -->
+                                                             <td colspan="2" style="font-size: 18px;background-color: lightcyan;"><b>Customer Review</b></td>
+                                                         </tr>
+                                                        <tr>
+                                                            <td><b>Date and Time:</b></td>
+                                                            <td>{{x.date}}</td>
+                                                        </tr>
+                                                         <tr>
+                                                             <td><b>Customer Name:</b></td>
+                                                             <td>{{x.cust_fname}} {{x.cust_mname}} {{x.cust_lname}}</td>
+                                                         </tr>
+                                                         <!-- <tr>
+                                                             <td><b>Contact Number:</b></td>
+                                                             <td>{{x.phone_number}}</td>
+                                                         </tr> -->
+                                                         <tr>
+                                                             <td><b>Service:</b></td>
+                                                             <td>{{x.service_description}}</td>
+                                                         </tr>
+                                                         <tr>
+                                                            <td><b>Price:</b></td>
+                                                            <td>₱{{x.service_price}}.00</td>
+                                                        </tr>
+                                                         <tr>
+                                                             <td><b>Staff:</b></td>
+                                                             <td>{{x.fname}} {{x.lname}}</td>
+                                                         </tr>
+                                                         <tr >
+                                                            <td><b>Review:</b></td>
+                                                            <!-- <td ng-if="x.status === 'active'||x.status === 'ACTIVE'" colspan="2" style="padding-bottom:0;font-size: 16px; vertical-align: auto;" ></td> -->
+                                                            <td colspan="2" style="padding-bottom:0;font-size: 16px; vertical-align: auto;">{{x.review}}</td>
+                                                        </tr>
+                                                         <tr>
+                                                            <td colspan="2" style="padding-bottom:0;font-size: 16px;text-align: center; vertical-align: auto;" ><b>{{x.status.toUpperCase()}}</b></td>
+                                                        </tr>
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            <!-- </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                       
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+
+        </div>
+        <div ng-if="vm.level === '3' && vm.approved === '0'|| vm.approved === '2'">
+            <div class="row">
+                <div class="card col-md-12 ">
+                    <div class="card-header">
+                        <h3>For Approval</h3>
+                    </div>
+                    <div class="card-body" style="opacity: 0.9;">
+                        <span style="color: red;" ng-if="vm.approved === '0'">NOTE: Your account is still subject for Approval. Please Complete the needed information.</span>
+                        <span style="color: red;" ng-if="vm.approved === '2'">NOTE: Your account was Denied. Please Complete the needed information.</span>
+                       
+                        <div class="col-md-12" style="height: 100%;padding-top: 3%;"> 
+                            <div class="row" style="padding: 0;">
+                                <div class="col-md-12">
+                                    <img id="img" ng-if="vm.avblepic==='true'" ng-src="assets/images/salon/{{vm.profile.salon_profpic}}" alt="" class="img-fluid" style="width: 100%;height: 25rem;" >
+                                    <img id="img" ng-if="vm.avblepic==='false'" ng-src="assets/images/salon/image_unavailable.jpg" alt="" class="img-fluid"  style="width: 100%;height: 25rem;" >
+                                    <span class="edit-prof-pic" ng-click="vm.updateSalonProfile()"><i class="fa fa-camera"></i></span>
+                                    <input id="file" type="file" accept="image/*" file-model="vm.image" custom-on-change="vm.Preview" style="display: none;">
+                                </div>
+                                <div class="col-md-12">
+                                    <h2>{{vm.profile.name}}</h2>
+                                    <h4>{{vm.profile.salon_description}}</h4>
+                                    <!-- <b><h4>Staff/s: Chakadal, Chackie, Teresa</h4></b> -->
+                                </div>
+                                <!-- gapatong ang mga cover photos -->
+                                
+                            </div>
+                            <div class="row" style="padding:0;">
+                                <br>
+                                <div class="col-md-6">
+                                   <table class="table table-striped">
+                                       <tbody>
+                                            <tr>
+                                                <td style="font-size: 18px;"><b>Contact Information</b></td>
+                                                <td style="font-size: 18px;text-align: right;" ng-click="vm.saveContactInfo(vm.profile)"><b><i class="fa fa-edit"></i></b></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Location:</b></td>
+                                                <td>{{vm.profile.address}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Contact Number:</b></td>
+                                                <td>{{vm.profile.phone_number}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Email Address:</b></td>
+                                                <td>{{vm.profile.email}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Office hours(IN):</b></td>
+                                                <td>{{vm.profile.office_hrs_in}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Office hours(OUT):</b></td>
+                                                <td>{{vm.profile.office_hrs_out}}</td>
+                                            </tr>
+                                            <!-- <tr>
+                                                <td><b>Services:</b></td>
+                                                <td></td>
+                                            </tr> -->
+                                       </tbody>
+                                   </table>
+                                </div>
+                                <!-- <img  ng-src="assets/images/salon/image_unavailable.jpg" alt="" class="img-fluid" style="width: 100%;height: 25rem;" > -->
+                                <div ng-if="vm.avblepicbs ==='false'" class="col-md-6" style="outline-style: solid;outline-color: rgb(191, 194, 196);">
+                                    <span style="text-align: center;">Business Permit</span>
+                                    <img id="bs" ng-src="assets/images/salon/image_unavailable.jpg" alt="" class="img-fluid" style="width: 100%;height: 25rem;" >
+                                        <span class="edit" ng-click="vm.updateBusinessPermit()"><i class="fa fa-camera"></i></span>
+                                        <input id="bsfile" type="file" accept="image/*" file-model="vm.imagebs" custom-on-change="vm.Preview_business_permit" style="display: none;">
+                                        
+                                    </div>
+                                <div ng-if="vm.avblepicbs==='true'" class="col-md-6" style="outline-style: solid;outline-color: rgb(191, 194, 196);">
+                                    <span style="text-align: center;">Business Permit</span>
+                                    <!-- <a href="http://localhost/weserve/assets/images/salon/{{vm.profile.salon_business_permit}}"> -->
+                                        <img id="bs" ng-if="vm.avblepicbs" ng-src="assets/images/salon/{{vm.profile.salon_business_permit}}" alt="" class="img-fluid" style="width: 100%;height: 25rem;" >
+                                        <span class="edit" ng-click="vm.updateBusinessPermit()"><i class="fa fa-camera"></i></span>
+                                        <input id="bsfile" type="file" accept="image/*" file-model="vm.imagebs" custom-on-change="vm.Preview_business_permit" style="display: none;">
+                                    </a>
+                                   
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12" style="padding-left:90%;margin-bottom:10px;margin-top: 10px;">
+                                        <button class="btn btn-primary" ng-click="vm.submitProfile()">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                       
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+</div>

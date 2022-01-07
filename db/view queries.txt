@@ -1,0 +1,30 @@
+create view user_acct_admin as 
+select a.user_id,a.username,a.password,b.*,c.*,d.image 
+from tbluser a 
+join tblaccount b 
+on a.accnt_id = b.accnt_id
+join tbladmin c
+on b.id_lnk = c.admin_id
+join tblimage d
+on c.admin_id = d.id_lnk
+where d.usertype_lnk = 1 & d.img_category_lnk = 3
+
+create view user_acct_salon as 
+select a.user_id,a.username,a.password,b.*,c.*
+from tbluser a 
+join tblaccount b 
+on a.accnt_id = b.accnt_id
+join tblsalon c
+on b.id_lnk = c.salon_id
+
+create view salon_review_appointment AS
+SELECT a.*,b.appointment_id,b.staff_id,b.status,b.services_id,b.date_start,b.date_end, c.rev_id,c.date,c.rate,c.customer_id,c.remarks,d.fname,d.lname,d.contact_number
+from tblsalon a
+join tblappointment b 
+on a.salon_id = b.salon_id
+JOIN tblreview c 
+on c.appointment_id = b.appointment_id and c.customer_id = b.customer_id
+JOIN tblcustomer d 
+on c.customer_id = b.customer_id and d.customer_id = c.customer_id
+
+select `a`.`user_id` AS `user_id`,`a`.`username` AS `username`,`a`.`password` AS `password`,`b`.`accnt_id` AS `accnt_id`,`b`.`usertype_id` AS `usertype_id`,`b`.`id_lnk` AS `id_lnk`,`c`.`customer_id` AS `customer_id`,`c`.`customer_profilepic` AS `customer_profilepic`,`c`.`email` AS `email`,`c`.`fname` AS `fname`,`c`.`lname` AS `lname`,`c`.`mname` AS `mname`,`c`.`address` AS `address`,`c`.`contact_number` AS `contact_number`,`c`.`brgy` AS `brgy`,`c`.`city` AS `city` from ((`weserve`.`tbluser` `a` join `weserve`.`tblaccount` `b` on(`a`.`accnt_id` = `b`.`accnt_id`)) join `weserve`.`tblcustomer` `c` on(`b`.`id_lnk` = `c`.`customer_id`)) where `b`.`usertype_id` = 2

@@ -1,0 +1,19 @@
+<div class="modal-content" my-draggable>
+    <div class="modal-title-div">
+        <strong class="modal-title-name">COMMENT</strong>
+        <button class="modal-exit" ng-click="modal.close()">
+            <span class="fa fa-times"></span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <input class="form-control col-md-12" type="text" placeholder="Reason of denial" ng-model="modal.variables.comment">
+            </div>
+            <div class="col-md-12" style="text-align: right; margin-top: 5px;" >
+                <button style="margin-bottom: 3px;" class="btn btn-warning col-md-12" ng-click="modal.deny()">Deny</button>
+                <button class="btn btn-danger col-md-12" ng-click="modal.close()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+
+
+<div class="animated fadeIn" ng-controller="ServiceCtrl as vm">
+
+    <div class="row" style="position: absolute;">
+        <div class="col-md-12 center" >
+            <image src="assets/images/logo.png" style="width:100rem;height:55rem;opacity: 0.2;">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="progress-card ">
+                <div class="progress-card-header">
+                    <div class="header-button-group">
+                        <h3>Service Form</h3>
+                        <!-- <div class="btn-group">
+                            <button type="button" class="btn-clear" ng-click="vm.newMember()" title="Add New Member">
+                                <i class="fa fa-user-plus"></i>
+                            </button>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="progress-card-body">
+                    <form >
+                        <br>
+                            <label>Service Name</label>
+                            <input type="text" class="form-control" ng-model="vm.serv.serv_name" required autofocus>
+                            
+                            <label>Service Price</label>
+                            <input type="text" class="form-control" ng-model="vm.serv.serv_price" required >
+                         
+                            <button  type="button" ng-click="vm.AddService()" class="btn btn-primary" style="padding:8px 14px;margin-top: 10px;margin-left: 65%;"><i class="fa fa-save"> Save</i></button>
+                            <button type="button" ng-click="vm.DeleteService()" class="btn btn-warning" style="padding:8px 14px;margin-top: 10px;margin-left: 7px;"><i class="fa fa-trash"> Delete</i></button>
+                            <!-- <button ng-if="vm.serv.update === 'false'" type="button" ng-click="vm.AddService()" class="btn btn-primary" style="padding:8px 14px;margin-top: 10px;margin-left: 88%;">Add</button>
+                            <button ng-if="vm.serv.update === 'true'" type="button" ng-click="vm.AddService()" class="btn btn-primary" style="padding:8px 14px;margin-top: 10px;margin-left: 69%;">Update</button>
+                            <button ng-if="vm.serv.update === 'true'" type="button" ng-click="vm.Back()" class="btn btn-primary" style="padding:8px 14px;margin-top: 10px;margin-left: 10px;">Back</button> -->
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="progress-card ">
+                <div class="progress-card-header">
+                    <div class="header-button-group">
+                        <h3>Services</h3>
+                    </div>
+                </div>
+                <div class="progress-card-body">
+                    <div class="progress-card-body" style="opacity: 0.7;">
+                        <div style="height: 400px;" ui-grid="vm.serviceGrid" ui-grid-selection ui-grid-resize-columns></div>
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

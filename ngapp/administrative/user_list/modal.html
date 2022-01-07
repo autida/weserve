@@ -1,0 +1,105 @@
+<div class="modal-content">
+    <div class="modal-title-div">
+        <strong class="modal-title-name" ng-if = "!modal.variables.update">Add New User</strong>
+        <strong class="modal-title-name" ng-if = "modal.variables.update === '1'">Update User</strong>
+        <button class="modal-exit" ng-click="modal.close()">
+            <span class="fa fa-times"></span>
+        </button>
+    </div>
+    <form ng-submit="modal.save()">
+        <div class="modal-body">
+            <div class="row" ng-if = "modal.variables.level === '1'">
+                
+                <div class="col-md-4">
+                    <div class="floating-label">
+                        <input type="hidden" class="form-control" ng-model="modal.variables.id">
+                        <input type="text" class="form-control" ng-model="modal.variables.LastName" autofocus required>
+                        <label ng-class="{'float':modal.variables.LastName}">Lastname</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="floating-label">
+                        <input type="text" class="form-control" ng-model="modal.variables.FirstName" required>
+                        <label ng-class="{'float':modal.variables.FirstName}">FirstName</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="floating-label">
+                        <input type="text" class="form-control" ng-model="modal.variables.MiddleName">
+                        <label ng-class="{'float':modal.variables.MiddleName}">Middlename</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="floating-label">
+                        <input type="text" class="form-control" ng-model="modal.variables.username">
+                        <label ng-class="{'float':modal.variables.username}">username</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="floating-label">
+                        <input type="email" class="form-control" ng-model="modal.variables.email">
+                        <label ng-class="{'float':modal.variables.email}">Email</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="floating-label">
+                        <input type="text" class="form-control" ng-model="modal.variables.contact_num">
+                        <label ng-class="{'float':modal.variables.contact_num}">Phone Number</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-if = "modal.variables.level === '3'">
+                
+                <div class="col-md-4">
+                    <div class="floating-label">
+                        <input type="hidden" class="form-control" ng-model="modal.variables.id">
+                        <input type="text" class="form-control" ng-model="modal.variables.LastName" autofocus required>
+                        <label ng-class="{'float':modal.variables.LastName}">Lastname</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="floating-label">
+                        <input type="text" class="form-control" ng-model="modal.variables.FirstName" required>
+                        <label ng-class="{'float':modal.variables.FirstName}">FirstName</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="floating-label">
+                        <input type="text" class="form-control" ng-model="modal.variables.MiddleName">
+                        <label ng-class="{'float':modal.variables.MiddleName}">Middlename</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="floating-label">
+                        <input type="text" class="form-control" ng-model="modal.variables.username">
+                        <label ng-class="{'float':modal.variables.username}">username</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="floating-label">
+                        <input type="email" class="form-control" ng-model="modal.variables.email">
+                        <label ng-class="{'float':modal.variables.email}">Email</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="floating-label">
+                        <input type="text" class="form-control" ng-model="modal.variables.contact_num">
+                        <label ng-class="{'float':modal.variables.contact_num}">Phone Number</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-save fa-fw"></i>Save</button>
+                        <button type="button"  class="btn btn-warning" ng-click="vm.DeleteUser()">
+                            <i class="fa fa-trash fa-fw"></i>Delete</button>
+                    <button type="button" class="btn" ng-click="modal.close()">
+                        <i class="fa fa-times fa-fw"></i>Close</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

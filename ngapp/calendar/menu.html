@@ -1,0 +1,73 @@
+<div ng-controller="MenuCtrl as vm" class="dashboard">
+    <div class="row">
+        <div class="card col-md-12">
+            <div class="card-header">
+                <h3>Add Menu</h3>
+            </div>
+            <form ng-submit="vm.save()">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div style="height: 300px;" ui-grid="vm.menuGrid" ui-grid-selection ui-grid-resize-columns></div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="floating-label">
+                                        <select class="form-control" ng-model="vm.variables.FormStates" ng-class="{'glow': vm.variables.FormStates}" ng-change="vm.changeLocation()">
+                                            <option></option>
+                                            <option ng-repeat="x in vm.states">{{ x.FormStates }}</option>
+                                        </select>
+                                        <label ng-class="{'float':vm.variables.FormStates}">---Select From Existing Menu---</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="floating-label">
+                                        <input type="text" class="form-control" ng-model="vm.variables.FormID" ng-class="{'glow': vm.variables.FormID}" disabled>
+                                        <label ng-class="{'float': vm.variables.FormID}">Menu ID</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="floating-label ">
+                                        <input type="text" class="form-control" ng-model="vm.variables.FormGroup" ng-class="{'glow': vm.variables.FormGroup}" disabled>
+                                        <label ng-class="{'float': vm.variables.FormGroup}">Menu Group</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="floating-label ">
+                                        <input type="text" class="form-control" ng-model="vm.variables.FormName" ng-class="{'glow': vm.variables.FormName}" disabled>
+                                        <label ng-class="{'float': vm.variables.FormName}">Menu Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="floating-label ">
+                                        <input type="text" class="form-control" ng-model="vm.variables.FormLocation" ng-class="{'glow': vm.variables.FormLocation}"
+                                            disabled>
+                                        <label ng-class="{'float': vm.variables.FormLocation}">Menu Location</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="footer-content">
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fa fa-save fa-fw"></i>Save</button>
+                                <button type="button" class="btn btn-danger" ng-click="vm.delete()">
+                                    <i class="fa fa-trash fa-fw"></i>Delete
+                                </button>
+                                <button type="button" class="btn btn-primary" ng-click="vm.clearFunction()">
+                                    <i class="fa fa-save fa-fw"></i>Clear
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="modal-content">
+    <div class="modal-title-div">
+        <strong class="modal-title-name">Services</strong>
+        <button class="modal-exit" ng-click="modal.close()">
+            <span class="fa fa-times"></span>
+        </button>
+    </div>
+    <form ng-submit="modal.save()">
+        <div class="modal-body">
+                    <div class="progress-card-body" style="opacity: 0.7;">
+                        <div style="height: 400px;" ui-grid="modal.serviceGrid" ui-grid-selection ui-grid-resize-columns></div>
+                    
+                    </div>
+        </div>
+    </form>
+</div>

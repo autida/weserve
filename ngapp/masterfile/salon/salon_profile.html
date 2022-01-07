@@ -1,0 +1,78 @@
+<div class="modal-content">
+    <form ng-submit="modal.save()">
+        <div class="modal-body">
+            <div class="row" style="padding: 0;">
+                <div class=" col-md-12">
+                    <img ng-if="modal.avblepic==='true'" ng-src="assets/images/salon/{{modal.variables.salon_profpic}}" alt="" class="img-fluid" style="width: 100%;height: 25rem;" >
+                    <img ng-if="modal.avblepic==='false'" ng-src="assets/images/salon/image_unavailable.jpg" alt="" class="img-fluid" style="width: 100%;height: 25rem;" >
+                </div>
+                <div class="col-md-12">
+                    <h2>{{modal.variables.name}}</h2>
+                    <h4>{{modal.variables.salon_description}}</h4>
+                    <!-- <b><h4>Staff/s: Chakadal, Chackie, Teresa</h4></b> -->
+                </div>
+                <!-- gapatong ang mga cover photos -->
+                
+            </div>
+            <div class="row" style="padding:0;">
+                <br>
+                <div class="col-md-6">
+                   <table class="table table-striped">
+                       <tbody>
+                            <tr>
+                                <td colspan="2" style="font-size: 18px;"><b>Contact Information</b></td>
+                            </tr>
+                            <tr>
+                                <td><b>Location:</b></td>
+                                <td>{{modal.variables.address}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Contact Number:</b></td>
+                                <td>{{modal.variables.phone_number}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Email Address:</b></td>
+                                <td>{{modal.variables.email}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Office hours(IN):</b></td>
+                                <td>{{modal.variables.office_hrs_in}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Office hours(OUT):</b></td>
+                                <td>{{modal.variables.office_hrs_out}}</td>
+                            </tr>
+                            <!-- <tr>
+                                <td><b>Services:</b></td>
+                                <td>{{modal.variables.email}}</td>
+                            </tr> -->
+                       </tbody>
+                   </table>
+                </div>
+                <div ng-if="modal.avblepicbs ==='false'" class="col-md-6" >
+                        <img  ng-src="assets/images/salon/image_unavailable.jpg" alt="" class="img-fluid" style="width: 100%;height: 25rem;" >
+                 </div>
+                <div ng-if="modal.avblepicbs==='true'" class="col-md-6" >
+                    <a href="http://localhost/weserve/assets/images/salon/{{modal.variables.salon_business_permit}}">
+                        <img ng-if="modal.avblepicbs" ng-src="assets/images/salon/{{modal.variables.salon_business_permit}}" alt="" class="img-fluid" style="width: 100%;height: 25rem;" >
+                    </a>
+                   
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+                <div class="col-md-12">
+                    <button ng-if="modal.approval" type="button" class="btn btn-primary" ng-click="modal.approved(modal.variables.salon_id)">
+                        <i class="fa fa-save fa-fw"></i>Approve</button>
+                        <button ng-if="modal.approval" type="button" class="btn btn-warning" ng-click="modal.denied(modal.variables.salon_id)">
+                            <i class="fa fa-save fa-fw"></i>Deny</button>
+                    <button ng-if="!modal.approval" type="button" class="btn btn-warning" ng-click="modal.delete(modal.variables.salon_id)">
+                            <i class="fa fa-times fa-fw"></i>Delete</button>
+                    <button ng-if="!modal.approval" type="button" class="btn" ng-click="modal.close()">
+                        <i class="fa fa-times fa-fw"></i>Close</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

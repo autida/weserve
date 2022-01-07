@@ -1,0 +1,45 @@
+
+
+<div class="animated fadeIn" ng-controller="GalleryCtrl as vm">
+
+    <div class="row" style="position: absolute;">
+        <div class="col-md-12 center" >
+            <image src="assets/images/logo.png" style="width:100rem;height:55rem;opacity: 0.2;">
+        </div>
+    </div>
+    <div class="row">
+        <div class="progress-card col-md-12">
+            <div class="progress-card-header">
+                <div class="header-button-group">
+                    <h3>Gallery</h3>
+                    <div class="btn-group">
+                        <button type="button" class="btn-clear" ng-click="vm.newPhoto()" >
+                            +<i class="fa fa-image"></i>
+                        </button>
+
+                        <button type="button" class="btn-clear" ng-click="vm.delete()" >
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-card-body">
+                <input id="file" type="file" accept="image/*" file-model="vm.image" custom-on-change="vm.Preview" style="display: none;">
+                <div class="row">
+                    <div class="col-md-12" style="padding-top: 2%;opacity: 1;">
+                        <span ng-if="vm.salon_gallery_count === 0 " class="center"><i>No photos.</i></span>
+                                <div id="gallery" class="gallery col-md-4" style="padding: 10px;" ng-repeat="x in vm.filtered" >
+                                    <div class="card" style="padding: 0;" ng-click="vm.getData(x.img_id)">
+                                        <div class="row">
+                                            <div class="col-md-12" >
+                                                <span ng-if="vm.imgdelete ==='true'" class="gallery_close" ng-click="vm.PhotoEdit(x.img_id)">&times;</span>
+                                                <img ng-src="assets/images/salon_gallery/{{x.image}}" alt="" class="img-fluid" style="width: 100%;height: 20rem;" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                     </div>
+                    </div>
+        </div>
+</div>

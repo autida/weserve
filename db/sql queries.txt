@@ -1,0 +1,62 @@
+create view salon_image AS
+select * from tblsalon join tblimage on tblsalon.salon_id = tblimage.id_lnk and usertype_lnk = 3;
+
+
+note:
+is_approved :0 = for approval;
+             1 = approved;
+             2 = denied;
+
+if mag-add ug user = automatic na ang picture magadd of default
+
+create view Account_image as 
+select * from tblaccount join tblimage on tblaccount.accnt_id = tblimage.id_lnk where tblimage.usertype_lnk = 1
+
+if mag-add ug staff with schedule:
+insert: tblstaff->getinsertid
+        tblsched->getinsertid
+        tbldays_has_sched->getinsertid(tblsched) & day value
+        tblstaffsched->getinsertid(tblstaff)&getinsertid(tblsched)
+
+staff view:
+create view staff_sched_day as
+select s.*,sched.*,day.day_name
+from tblstaff s
+join tblstaff_sched ss
+on s.staff_id = ss.staff_id 
+join tblschedule sched
+on ss.sched_id = sched.sched_id
+join tbldays_has_sched dhs
+on sched.sched_id = dhs.sched_id
+join tbldays day
+on dhs.day_id = day.day_id
+
+staff-services view;
+create view staff_service as
+select s.staff_id,s.fname,s.lname,s.mnamae,s.contact_number,serv.service_id,serv.service_description,serv.service_price
+from tblstaff s
+join tblstaff_services ss
+on s.staff_id = ss.staff_id 
+join tblservice serv
+on ss.service_id = serv.service_id
+
+appointment view:
+create view appointment as
+select staff.*,ap.appointment_id,ap.date,cust.*,serv.*,ap.salon_id
+from tblappointment ap
+join tblcustomer cust
+on ap.customer_id = cust.customer_id
+join tblservice serv
+on ap.services_id = serv.service_id
+
+
+UPDATE `tblsalon` SET `salon_profpic` = 'moty.jpg' WHERE `tblsalon`.`salon_id` = 3;
+
+appointment view:
+create view appointment as
+select staff.*,serv.*,
+from tblstaff ap
+join tblcustomer cust
+on ap.customer_id = cust.customer_id
+join tblservice serv
+on ap.services_id = serv.service_id

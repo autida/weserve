@@ -1,0 +1,220 @@
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav">
+        <div class="brand">
+            <div class="company-logo">
+                <image src="assets/images/logo_wobg.png" style="height: 15rem; width: 27rem;">
+            </div>
+            <!-- <div class="brand-logo">
+				<i class="fa fa-home"></i>
+			</div>
+			<div class="brand-text">
+				<p>weserve</p>
+				<span>Pueblo Golf Estates Homeowners Association Inc.</span>
+			</div> -->
+        </div>
+		<div class="profile">
+		
+			<div class="round">
+				<img ng-src="{{vm.pic}}" />
+			</div>
+			<div class="profile-setting" style="padding-top: 0; padding-bottom: 5px;">
+				<span style="color:honeydew"><b>{{ vm.username.toUpperCase() }}</b></span>
+				<div ng-if="vm.level === '3'" style="float:left;">
+				<!-- <span ng-if="x.rate==='1'|| x.rate==='2' || x.rate==='3'||x.rate==='4'||x.rate==='5'" style="padding: 0;color:rgba(29, 32, 44, 0.7)"><b>Rating:</b> {{x.rate}}/5 </span>
+				<span ng-if="!x.rate" style="padding: 0;color:rgba(29, 32, 44, 0.7)"><b>Rating:</b> 0/5 </span> -->
+				<span  style="color: yellow;font-size: 18px;"></span><span ng-if="!vm.starRate" style="color:gray;font-size: 12px;opacity: 0.3;">★★★★★</span>
+				<span  ng-if="vm.starRate==='1'" style="color: yellow;font-size: 12px;display:inline;">★</span><span ng-if="vm.starRate==='1'" style="color:gray;font-size: 12px;opacity: 0.3;display:inline;">★★★★</span>
+				<span  ng-if="vm.starRate==='2'" style="color: yellow;font-size: 12px;display:inline;">★★</span><span  ng-if="vm.starRate==='2'" style="color:gray;font-size: 12px;opacity: 0.3;display:inline;">★★★</span>
+				<span  ng-if="vm.starRate==='3'" style="color: yellow;font-size: 12px;display:inline;">★★★</span><span  ng-if="vm.starRate==='3'" style="display:inline;color:gray;font-size: 12px;opacity: 0.3;">★★</span>
+				<span  ng-if="vm.starRate==='4'" style="color: yellow;font-size: 12px;display:inline;">★★★★</span><span  ng-if="vm.starRate==='4'" style="color:gray;font-size: 12px;opacity: 0.35;display:inline;">★</span>
+				<span  ng-if="vm.starRate==='5'" style="color: yellow;font-size: 12px;display:inline;">★★★★★</span><span  ng-if="vm.starRate==='5'" style="color:gray;font-size: 12px;opacity: 0.3;display:inline;"></span>
+				</div>
+				<div class="dropdown show">
+					<h4 style="opacity: 0.7;" class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Account Settings
+						<i class="fa fa-caret-down fa-fw"></i>
+					</h4>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						<a class="dropdown-item" ui-sref="app.profile">
+							<i class="fa fa-user fa-fw"></i>View Profile</a>
+							<a ng-if="vm.level === '3'" class="dropdown-item" ui-sref="app.salon-profile">
+								<i class="fa fa-user fa-fw"></i>Salon Profile</a>
+						<a class="dropdown-item" ng-click="vm.logout()">
+							<i class="fa fa-sign-out fa-fw"></i>Logout</a>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+        <div class="menus">
+            <ul class="nav" id="side-menu">
+                <li ui-sref-active="selected">
+                    <a  ui-sref="app.main" ng-click="vm.dashboard()" >
+                        <i class="fa fa-th-large"></i> &nbsp; <span style="font-size: 16px;">Dashboard</span></a>
+                </li>
+				<!--  <li ng-if="vm.level === '3'">
+                    <a ui-sref="app.main" ng-click="vm.notification()" >
+                        <i class="fa fa-calendar"></i> &nbsp; <span style="font-size: 16px;">Notification</span></a>
+                </li> -->
+				<li ui-sref-active="selected" ng-if="vm.level === '3'">
+                    <a ui-sref="app.menu" >
+                        <i class="fa fa-calendar"></i> &nbsp; Calendar</a>
+                </li>
+				<!-- <li  ui-sref-active = 'selected' ng-if="vm.level === '3'">
+					
+                    <a ui-sref="app.calendar" ng-click="vm.calendar()" >
+                        <i class="fa fa-calendar"></i> &nbsp; <span style="font-size: 16px;">Calendar</span></a>
+                </li>  -->
+                <!-- <li ng-class="{active: vm.openMenu === 'masterfile'}">
+					<a class="pointer" ng-click="vm.openSubMenu('masterfile')">
+						<i class="fa fa-tag first-tag"></i> &nbsp;
+						<span>Masterfile</span>
+						<span class="fa arrow"></span>
+					</a>
+					<ul class="nav nav-second-level" ng-class="{'open': vm.openMenu === 'masterfile'}">
+						<li ui-sref-active="selected">
+							<a ui-sref="app.masterfile.member-list">
+								<i class="fa fa-check"></i> &nbsp; Home Owner List</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.masterfile.other-income">
+								<i class="fa fa-check"></i> &nbsp; Other Income List</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.masterfile.chart-of-account">
+								<i class="fa fa-check"></i> &nbsp; Chart of Account List</a>
+						</li>
+					</ul>
+				</li>
+				<li ng-class="{active: vm.openMenu === 'administrative'}">
+					<a class="pointer" ng-click="vm.openSubMenu('administrative')">
+						<i class="fa fa-tag first-tag"></i> &nbsp;
+						<span>Administrative</span>
+						<span class="fa arrow"></span>
+					</a>
+					<ul class="nav nav-second-level" ng-class="{'open': vm.openMenu === 'administrative'}">
+						<li ui-sref-active="selected">
+							<a ui-sref="app.administrative.user-list">
+								<i class="fa fa-check"></i> &nbsp; User List</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.administrative.signatory-list">
+								<i class="fa fa-check"></i> &nbsp; Signatory List</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.administrative.or-setup">
+								<i class="fa fa-check"></i> &nbsp; O.R Series Setup</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.administrative.auto-debit-chart-of-account">
+								<i class="fa fa-check"></i> &nbsp; Transaction Auto Debit Chart of Account</a>
+						</li>
+					</ul>
+				</li>
+				<li ng-class="{active: vm.openMenu === 'transaction'}">
+					<a class="pointer" ng-click="vm.openSubMenu('transaction')">
+						<i class="fa fa-tag first-tag"></i> &nbsp;
+						<span>Transaction</span>
+						<span class="fa arrow"></span>
+					</a>
+					<ul class="nav nav-second-level" ng-class="{'open': vm.openMenu === 'transaction'}">
+						<li ui-sref-active="selected">
+							<a ui-sref="app.transaction.cashiering-payment">
+								<i class="fa fa-check"></i> &nbsp; Cashiering Payment</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.transaction.petty-cash-entry">
+								<i class="fa fa-check"></i> &nbsp; Petty Cash Entry</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.transaction.check-issuance">
+								<i class="fa fa-check"></i> &nbsp; Check Issuance</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.transaction.general-journal-entry">
+								<i class="fa fa-check"></i> &nbsp; General Journal Entry</a>
+						</li>
+						<li class="divider"></li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.transaction.monthly-receivable">
+								<i class="fa fa-check"></i> &nbsp; Run Monthly Receivable</a>
+						</li>
+						
+						<li ui-sref-active="selected">
+							<a ui-sref="app.transaction.monthly-dues-ledger">
+								<i class="fa fa-check"></i> &nbsp; Monthly Dues Ledger</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.transaction.construction-bond">
+								<i class="fa fa-check"></i> &nbsp; Construction Bond</a>
+						</li>
+					</ul>
+				</li>
+				<li ng-class="{active: vm.openMenu === 'reports'}">
+					<a class="pointer" ng-click="vm.openSubMenu('reports')">
+						<i class="fa fa-tag first-tag"></i> &nbsp;
+						<span>Reports</span>
+						<span class="fa arrow"></span>
+					</a>
+					<ul class="nav nav-second-level" ng-class="{'open': vm.openMenu === 'reports'}">
+						<li ui-sref-active="selected">
+							<a ui-sref="app.reports.aging-of-receivable">
+								<i class="fa fa-check"></i> &nbsp; Aging of Receivable</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.reports.collection-vs-receivable">
+								<i class="fa fa-check"></i> &nbsp; Collection Vs. Receivable</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.reports.construction-bond-report">
+								<i class="fa fa-check"></i> &nbsp; Construction Bond Report</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.reports.cashier-daily-cash-disposition">
+								<i class="fa fa-check"></i> &nbsp; Cashier Daily Cash Disposition</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.reports.cashier-summary">
+								<i class="fa fa-check"></i> &nbsp; Cashier Summary</a>
+						</li>
+						<li class="divider"></li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.reports.trial-balance">
+								<i class="fa fa-check"></i> &nbsp; Trial Balance</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.reports.income-statement">
+								<i class="fa fa-check"></i> &nbsp; Income Statement</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.reports.balance-sheet">
+								<i class="fa fa-check"></i> &nbsp; Balance Sheet</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.reports.journal-book">
+								<i class="fa fa-check"></i> &nbsp; Journal Book</a>
+						</li>
+					</ul>
+				</li> -->
+                <li ng-repeat="x in vm.menuList" ng-class="{active: vm.openMenu === x.group}">
+                    <a class="pointer" ng-click="vm.openSubMenu(x.group)">
+                        <i class="fa fa-tag first-tag"></i> &nbsp;
+                        <span style="font-size: 16px;">{{x.group}}</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level" ng-class="{'open': vm.openMenu === x.group}">
+                        <li ui-sref-active="selected" ng-repeat="y in x.value">
+                            <a ui-sref="{{y.FormLocation}}">
+                                <i class="fa fa-check"></i> {{y.FormName}}</a>
+                        </li>
+                    </ul>
+                </li>
+                <li ui-sref-active="selected" ng-if="vm.level === '5'">
+                    <a ui-sref="app.menu" ng-click="vm.addMenu()">
+                        <i class="fa fa-cogs"></i> &nbsp; Developer Settings</a>
+                </li>
+            </ul>
+        </div>
+		
+    </div>
+</div>

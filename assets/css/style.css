@@ -1,0 +1,269 @@
+@import url('../fonts/aladin/aladin.css');
+@import url('../fonts/abeezee/abeezee.css');
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.login-page {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.dark-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+.background-images {
+    position: relative;
+    height: 100vh;
+    width: 500%;
+    animation: 30s slider infinite;
+    left: 0;
+    margin: 0;
+}
+
+.background-images img {
+    width: 20%;
+    height: 100%;
+    float: left;
+}
+
+.login {
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+@keyframes slider {
+    0% {
+        left: 0;
+    }
+    20% {
+        left: 0;
+    }
+    25% {
+        left: -100%;
+    }
+    45% {
+        left: -100%;
+    }
+    50% {
+        left: -200%;
+    }
+    70% {
+        left: -200%;
+    }
+    75% {
+        left: -300%;
+    }
+    95% {
+        left: -300%;
+    }
+    100% {
+        left: -400%;
+    }
+}
+
+body {
+    background:white;
+}
+
+.text-color {
+    color: red;
+}
+.h10vh {
+    height: 10vh;
+}
+.h6vh {
+    height: 2vh;
+}
+.h30vh {
+    height: 30vh;
+}
+
+.login-bg {
+    display: flex;
+    height: 60vh;
+}
+.register-bg {
+    display: flex;
+    height: 50vh;
+}
+
+
+.logo-div {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border-right: 3px solid rgba(0, 0, 0, 0.3); */
+}
+.register-logo-div{
+    margin-top: 13vh;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border-right: 3px solid rgba(0, 0, 0, 0.3); */
+}
+.logo-brand i {
+    font-size: 90px;
+    text-shadow: 2px 10px rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+.logo-text p.first {
+    font-size: 70px;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: -5px 6px rgba(0, 0, 0, 0.3);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 5px;
+}
+
+.logo-text p.second {
+    font-size: 30px;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: -5px 6px rgba(0, 0, 0, 0.3);
+    font-family: "ABeeZee", sans-serif;
+}
+
+.login-div {
+    width: 50%;
+    height:  90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: "ABeeZee", sans-serif;
+}
+.panel {
+    width: 400px;
+    margin: 0 auto;
+    font-family: sans-serif;
+    font-weight: 500;
+    box-shadow: 5px 10px;
+    border-radius: 10px;
+}
+.panel-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 20px 0;
+}
+
+.register-panel {
+    width: 600px;
+    margin: 0 auto;
+    font-family: sans-serif;
+    font-weight: 500;
+    box-shadow: 5px 10px;
+    border-radius: 10px;
+    background-color: white;
+}
+.register-panel-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 8px 0;
+}
+
+
+.form-control {
+    height: 45px;
+    font-weight: 500;
+}
+
+.register-form-control {
+    height: 45px;
+    font-weight: 500;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.floating-label {
+    margin: 30px 0;
+    position: relative;
+}
+
+.floating-label label {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    color: rgba(0, 0, 0, 0.6);
+    pointer-events: none;
+    transition: .3s;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.floating-label input:focus~label {
+    top: -9px;
+    left: 5px;
+    color: rgba(0, 0, 0, 0.6);
+    padding: 0 5px;
+    background: #fff;
+    font-size: 12px;
+}
+
+.floating-label input:valid~label {
+    color: rgba(15, 6, 148, 0.7);
+    top: -9px;
+    left: 5px;
+    padding: 0 5px;
+    background: #fff;
+    font-size: 12px;
+}
+
+.floating-label input:active,
+.floating-label input:focus {
+    border-color: #999;
+}
+
+.floating-label input:valid {
+    border-color: rgba(15, 6, 148, 0.7);
+}
+
+.submit-form {
+    background: rgba(15, 6, 148, 0.7);
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 20px;
+    height: 50px;
+}
+
+.submit-form:hover {
+    background: rgba(15, 6, 148, 0.8);
+    color: #fff;
+}
+
+.error-text {
+    color: #ff0e0eb8;
+}
+
+@media (max-width: 960px) {
+    .login-bg {
+        flex-direction: column;
+        margin: 0 auto;
+    }
+    .register-bg {
+        flex-direction: column;
+        margin: 0 auto;
+    }
+    .login-div,
+    .register-div,
+    .logo-div {
+        width: 100%;
+    }
+}

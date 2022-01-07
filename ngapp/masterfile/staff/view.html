@@ -1,0 +1,189 @@
+
+
+<div class="animated fadeIn" ng-controller="StaffCtrl as vm">
+
+    <div class="row" style="position: absolute;">
+        <div class="col-md-12 center" >
+            <image src="assets/images/logo.png" style="width:100rem;height:55rem;opacity: 0.2;">
+        </div>
+    </div>
+    <div ng-if="vm.edit==='false'" class="row">
+        
+        <div class="col-md-12">
+            <div class="progress-card ">
+                <div class="progress-card-header">
+                    <div class="header-button-group">
+                        <h3>Staff List</h3>
+                        <div class="btn-group">
+                            <!-- <button type="button" class="btn-clear"><a href="#form"></a>
+                                <i class="fa fa-user-plus"></i>
+                            </button> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="progress-card-body">
+                    <div class="progress-card-body" style="opacity: 0.7;">
+                        <span ng-if="vm.staff_count === 0"><i>No Registerd Staff.</i></span>
+                        <div ng-if="vm.staff_count > 0">
+                            <div style="height: 500px;font-size: 14px;" ui-grid="vm.staffListGrid" ui-grid-selection ui-grid-resize-columns ></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div ng-if="vm.edit==='false'" class="row" id="form">
+        <div class="col-md-12">
+            <div class="progress-card ">
+                <div class="progress-card-header">
+                    <div class="header-button-group">
+                        <h3>Staff Form</h3>
+                        <div class="btn-group">
+                            <button type="button" class="btn-clear" ng-click="vm.newMember()" title="Add New Member">
+                                <i class="fa fa-user-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="progress-card-body" style="opacity: 0.8;">
+                    <form >
+                        <label style="font-size: 18px;">Staff Information</label>
+                        <br>
+                        <br>
+                        <div class="staff-info">
+                            <div class="row">
+                                <div class="col-md-12" style="padding: 20px;">
+                                    <!-- <label>First Name</label> -->
+                                    <!-- <input type="hidden" class="form-control" ng-model="vm.staff.staff_id" required autofocus> -->
+                                    <label>First Name</label>
+                                    <input type="text" class="form-control" ng-model="vm.staff.fname" required autofocus>
+                                    <label>Last Name</label>
+                                    <input type="text" class="form-control" ng-model="vm.staff.lname" required autofocus>
+                                    <label>Middle Name</label>
+                                    <input type="text" class="form-control" ng-model="vm.staff.mname" required autofocus>
+                                    
+                                    <label>Contact Number</label>
+                                    <input type="text" class="form-control" ng-model="vm.staff.contact_number" required >
+                                    
+                                    <!-- <button type="button" ng-click="vm.AddStaff()" class="btn btn-primary" style="padding:8px 14px;margin-top: 10px;margin-left: 85%;"><i class="fa fa-save"> Save</i></button>
+                                    <button type="button" ng-click="vm.Delete()" class="btn btn-warning" style="padding:8px 14px;margin-top: 10px;margin-left: 10px;">Delete</button> -->
+                                <button  type="button" ng-click="vm.AddStaff()" class="btn btn-primary" style="padding:8px 14px;margin-top: 10px;margin-left: 80%;"><i class="fa fa-save"> Save</i></button>
+                                <button type="button" ng-click="vm.DeleteStaff()" class="btn btn-warning" style="padding:8px 14px;margin-top: 10px;margin-left: 7px;"><i class="fa fa-trash"> Delete</i></button>
+                                </div>
+                                
+                            </div>
+                            <hr>
+                            <div ng-if="vm.update === 'true'">
+                                <!-- service -->
+                                <div class="row" >
+                                    <div class="col-md-12">
+                                        <label style="font-size: 18px;">Services</label>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 10px;">
+                                    <div class="col-md-4" style=" padding-right:5px;">
+                                        <div class="group-input">
+                                            <div class="floating-label">
+                                                <input class="form-control" ng-model="vm.serv.service_description"  ng-class="{'glow': vm.variables.groupCode}" disabled required >
+                                               <label ng-class="{'float': vm.serv.service_description}">Services</label>
+                                            </div>
+                                            <div class="button-group-append">
+                                                <button type="button" class="btn" ng-click="vm.search_service()" >
+                                                    <i class="fa fa-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="floating-label" >
+                                            <input class="form-control" type="text" ng-model="vm.serv.service_price">
+                                            <label ng-class="{'float':vm.serv.service_price}" ng-disabled>Service Price</label>
+                                        </div>
+                                    </div>
+                                    <div  >
+                                        <div class="col-md-3" style="margin: 0; padding: 2px;margin-top: 7px;margin-left:4px">
+                                            <button class="btn btn-primary" type="button" ng-click="vm.AddService()" style="padding: 9px 18px;"><i class="fa fa-save"> Save</i></button>
+                                            <button class="btn btn-warning" type="button" ng-click="vm.DeleteService()" style="padding: 9px 18px; margin-left: 10px;"><i class="fa fa-trash"> Delete</i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="row" style="margin-top: 10px;">
+                                        <div class="col-md-12" style="margin:0">
+                                            <div style="height: 400px;" ui-grid="vm.staffserviceGrid" ui-grid-selection ui-grid-resize-columns></div>
+                                  
+                                        </div>
+                                    </div>
+                                <hr>
+                               
+                               
+                                <!-- schedule -->
+                                <div class="row" >
+                                    <div class="col-md-12">
+                                        <label style="font-size: 18px;">Schedule</label>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 10px;">
+                                    
+                                    <div class="col-md-4" style="margin: 0; padding-right:5px;padding-top: 5px;">
+                                        <div class="floating-label" style="margin-top: 0;">
+                                            <select class="form-control" ng-model="vm.sched.day">
+                                                <option></option>
+                                                <option ng-value='1'>Monday</option>
+                                                <option ng-value='2'>Tuesday</option>
+                                                <option ng-value='3'>Wednesday</option>
+                                                <option ng-value='4'>Thursday</option>
+                                                <option ng-value='5'>Friday</option>
+                                                <option ng-value='6'>Saturday</option>
+                                                <option ng-value='7'>Sunday</option>
+                                            </select>
+                                            <label ng-class="{'float':vm.sched.day}">Days of the Week</label>
+                                        </div>
+                                    </div>
+                                    <div class="floating-label col-md-3" style="margin: 0; padding: 5px;">
+                                        <input class="form-control" type="time" ng-model="vm.sched.time_in">
+                                        <label ng-class="{'float':vm.sched.time_in}">time-in</label>
+                                    </div>
+                                    <div class="floating-label col-md-3" style="margin: 0; padding: 5px;">
+                                        <input class="form-control" type="time" ng-model="vm.sched.time_out">
+                                        <label ng-class="{'float':vm.sched.time_out}">time-out</label>
+                                    </div>
+                                    <div class="col-md-2" style="margin: 0; padding: 5px;">
+                                        <button class="btn btn-primary" type="button" ng-click="vm.addSched()" ><i class="fa fa-save"> Save</i></button>
+                                        <button class="btn btn-warning" type="button" ng-click="vm.DeleteSchedule()" ><i class="fa fa-trash"> Delete</i></button>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 10px;">
+                                    <div class="col-md-12" style="margin:0">
+                                        <div style="height: 400px;" ui-grid="vm.schedGrid" ui-grid-selection ui-grid-resize-columns></div>
+                              
+                                    </div>
+                                </div>
+                                
+                            </div>
+                                
+                       
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col-md-12">
+            <div class="progress-card ">
+                <div class="progress-card-header">
+                    <div class="header-button-group">
+                        <h3>Staff List</h3>
+                    </div>
+                </div>
+                <div class="progress-card-body">
+                    <div class="progress-card-body" style="opacity: 0.7;">
+                        <div style="height: 450px;" ui-grid="vm.staffGrid" ui-grid-selection ui-grid-resize-columns></div>
+                            
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+
+  
+</div>

@@ -1,0 +1,59 @@
+<div class="animated fadeIn" ng-controller="ApprovalCtrl as vm">
+	<div class="row" style="position: absolute;">
+		<div class="col-md-12 center" >
+			<image src="assets/images/logo.png" style="width:100rem;height:55rem;opacity: 0.2;">
+		</div>
+	</div>
+	<div class="row">
+		<div class="progress-card col-md-12 ">
+			<div class="progress-card-header">
+				<h3>For Approval</h3>
+			</div>
+			<div class="progress-card-body" style="opacity: 0.7;">
+				<span ng-if="vm.countNotif === 0" class="center"><i> No Pending Request.</i></span>
+				<div class="col-md-12" style="height: 100%;padding-top: 3%;"> 
+					<div  class="card col-md-12"  ng-repeat="x in vm.filtered">
+						<div class="col-md-10">
+							<span><b>Registration Request:</b>{{x.name}}</span>
+							
+						</div>
+						<div class="col-md-2" style="text-align: right" >
+							<button class="btn btn-info" ng-click="vm.openSalonProfile(x.salon_id)">VIEW</button>
+						</div>
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	<!-- <div class="row" ng-if="vm.level === '3'">
+		<div class="progress-card col-md-12 ">
+			<div class="progress-card-header">
+				<h3>Appointments</h3>
+			</div>
+			<div class="progress-card-body" style="opacity: 0.7;">
+				<span ng-if="vm.countNotif === 0" class="center"><i> No Pending Request.</i></span>
+				<div class="col-md-12" style="height: 100%;padding-top: 3%;"> 
+					<div  class="card col-md-12"  ng-repeat="x in vm.filtered">
+						<div class="col-md-8">
+							<span><b>Appointment Request:</b>{{x.name}}</span>
+							
+						</div>
+						<div class="col-md-2" style="text-align: right" >
+							<button class="btn btn-info" ng-click="vm.accept_appointment(x.salon_id)">Accept</button>
+						</div>
+						<div class="col-md-2" style="text-align: right" >
+							<button class="btn btn-warning" ng-click="vm.deny_appointment(x.salon_id)">Deny</button>
+						</div>
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+	</div> -->
+</div>
